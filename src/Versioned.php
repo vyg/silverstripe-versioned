@@ -473,6 +473,10 @@ class Versioned extends DataExtension implements TemplateGlobalProvider, Resetta
      */
     public function augmentSQL(SQLSelect $query, DataQuery $dataQuery = null)
     {
+        if (!$dataQuery) {
+            return;
+        }
+
         // Ensure query mode exists
         $versionedMode = $dataQuery->getQueryParam('Versioned.mode');
         if (!$versionedMode) {
